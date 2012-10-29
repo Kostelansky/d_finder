@@ -13,7 +13,8 @@ __python_version__ = "3.3.0"
 def dir_tree_mapper(basedir_root):
 	for root, dirs, files in os.walk(basedir_root):
 		for file in files:
-			yield os.path.join(root, file)
+			if any(map(file.find, [".pdf", ".txt", ".jpg", ".jpeg", ".dmg"])): #Only Look For Certain File Ext. Duplicates. 
+				yield os.path.join(root, file)
 
 def get_filesize(files):
 	for file in files:
@@ -51,7 +52,7 @@ def remove_non_dups(basedir_root_mod):
 	
 def print_results(final):
 	for files in final:
-		print(files)
+		print("File Size: " + os.path.getsize(files) + "File Path: " + files)
 	
 if __name__ == '__main__':
 	#Base Root Directory To Scan
