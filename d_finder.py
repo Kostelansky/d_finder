@@ -51,8 +51,12 @@ def remove_non_dups(basedir_root_mod):
 	return r
 	
 def print_results(final):
+	r_file = open("d_finder.txt", "wt")
 	for files in final:
-		print("File Size: " + os.path.getsize(files) + "File Path: " + files)
+		size = str(os.path.getsize(files))
+		print("File Size: " + size + "File Path: " + files)
+		r_file.write("File Size: " + size + "File Path: " + files + "\n")
+	r_file.close()
 	
 if __name__ == '__main__':
 	#Base Root Directory To Scan
