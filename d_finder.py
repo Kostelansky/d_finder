@@ -60,7 +60,7 @@ def print_results(final):
 	
 if __name__ == '__main__':
 	#Base Root Directory To Scan
-	basedir_root = "/Users/Kostelansky/test" #DEFINE!
+	basedir_root = "" #DEFINE!
 
 	if os.path.isdir(basedir_root):
 		dir_tree = dir_tree_mapper(basedir_root) #Return Index of Base Root Dir
