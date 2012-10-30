@@ -13,7 +13,7 @@ __python_version__ = "3.3.0"
 def dir_tree_mapper(basedir_root):
 	for root, dirs, files in os.walk(basedir_root):
 		for file in files:
-			if any(map(file.find, [".pdf", ".txt", ".jpg", ".jpeg", ".dmg"])): #Only Look For Certain File Ext. Duplicates. 
+			if '.pdf' or 'docx' in file:
 				yield os.path.join(root, file)
 
 def get_filesize(files):
@@ -54,13 +54,13 @@ def print_results(final):
 	r_file = open("d_finder.txt", "wt")
 	for files in final:
 		size = str(os.path.getsize(files))
-		print("File Size: " + size + "File Path: " + files)
-		r_file.write("File Size: " + size + "File Path: " + files + "\n")
+			print("\nFile Size: " + size + "				File Path: " + files)
+			r_file.write("File Size: " + size + "		File Path: " + files + "\n")
 	r_file.close()
 	
 if __name__ == '__main__':
 	#Base Root Directory To Scan
-	basedir_root = "" #DEFINE!
+	basedir_root = "/Users/Kostelansky/test" #DEFINE!
 
 	if os.path.isdir(basedir_root):
 		dir_tree = dir_tree_mapper(basedir_root) #Return Index of Base Root Dir
